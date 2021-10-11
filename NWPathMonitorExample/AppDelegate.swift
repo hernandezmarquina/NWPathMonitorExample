@@ -6,16 +6,29 @@
 //
 
 import UIKit
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    let monitor = NWPathMonitor()
+    let monitorQueue = DispatchQueue(label: "InternetConnectionMonitor")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    
+        monitor.pathUpdateHandler = { pathUpdateHandler in
+            if pathUpdateHandler.status == .satisfied {
+                print("Dispositivo conectado a internet")
+            } else {
+                print("Dispositivo sin conexión")
+            }
+        }
+        
+        monitor.start(queue: monitorQueue)
+        
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
