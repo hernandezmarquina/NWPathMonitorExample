@@ -7,32 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: InternetConnectionController {
 
     @IBOutlet weak var connectionLabel: UILabel!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected(_:)), name: .connected, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(connectionLost(_:)), name: .connectionLost, object: nil)
+    override func onConnectionLost() {
+        connectionLabel.text = "Dispositivo sin conexión"
     }
     
-    @objc func deviceConnected(_ notification: Notification) {
-        updateLabel(text: "Dispositivo conectado")
+    override func onDeviceConnected() {
+        connectionLabel.text = "Dispositivo conectado"
     }
-    
-    @objc func connectionLost(_ notification: Notification) {
-        updateLabel(text: "Dispositivo sin conexión")
-    }
-    
-    func updateLabel(text: String) {
-        DispatchQueue.main.async { [self] in
-            self.connectionLabel.text = text
-        }
-    }
-
 }
 
