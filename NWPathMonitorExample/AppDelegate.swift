@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NotificationCenter.default.post(name: .connectionLost, object: nil)
                 print("Dispositivo sin conexión")
             }
-            NotificationCenter.default.post(name: .connected, object: nil)
         }
         
         monitor.start(queue: monitorQueue)
