@@ -18,10 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         monitor.pathUpdateHandler = { pathUpdateHandler in
             if pathUpdateHandler.status == .satisfied {
+                NotificationCenter.default.post(name: .connected, object: nil)
                 print("Dispositivo conectado a internet")
             } else {
+                NotificationCenter.default.post(name: .connectionLost, object: nil)
                 print("Dispositivo sin conexión")
             }
+            NotificationCenter.default.post(name: .connected, object: nil)
         }
         
         monitor.start(queue: monitorQueue)
@@ -43,7 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+}
 
-
+extension Notification.Name {
+    static let connected = Notification.Name("connected")
+    static let connectionLost = Notification.Name("connectionLost")
 }
 
