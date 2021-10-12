@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,11 +23,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbh-BS-fqs">
+                                <rect key="frame" x="165" y="470.5" width="84.5" height="31"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Siguiente"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qeb-jt-0My"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="nbh-BS-fqs" firstAttribute="top" secondItem="D1v-Ar-BAS" secondAttribute="bottom" constant="12" id="Gfo-ij-ebP"/>
                             <constraint firstItem="D1v-Ar-BAS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wea-ZE-zyF"/>
+                            <constraint firstItem="nbh-BS-fqs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZdB-KS-jbN"/>
                             <constraint firstItem="D1v-Ar-BAS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gtC-AU-0Xy"/>
                         </constraints>
                     </view>
@@ -38,10 +51,66 @@
             </objects>
             <point key="canvasLocation" x="139" y="110"/>
         </scene>
+        <!--Second Controller-->
+        <scene sceneID="3d7-0G-LbR">
+            <objects>
+                <viewController storyboardIdentifier="SecondController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTy-EV-LPG" customClass="SecondController" customModule="NWPathMonitorExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NaJ-AH-cF9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbZ-DM-7K0">
+                                <rect key="frame" x="167" y="433" width="80" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="8Wg-qF-5bc"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Regresar"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="cTy-EV-LPG" eventType="touchUpInside" id="8Zy-ag-mlF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoS-lq-4IX">
+                                <rect key="frame" x="16" y="479" width="382" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lq5-Ki-8Q0"/>
+                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <constraints>
+                            <constraint firstItem="FbZ-DM-7K0" firstAttribute="centerY" secondItem="NaJ-AH-cF9" secondAttribute="centerY" id="MSm-01-pvK"/>
+                            <constraint firstItem="FbZ-DM-7K0" firstAttribute="centerX" secondItem="NaJ-AH-cF9" secondAttribute="centerX" id="MoN-nk-eYL"/>
+                            <constraint firstItem="lq5-Ki-8Q0" firstAttribute="trailing" secondItem="FoS-lq-4IX" secondAttribute="trailing" constant="16" id="hF1-3p-mMr"/>
+                            <constraint firstItem="FoS-lq-4IX" firstAttribute="top" secondItem="FbZ-DM-7K0" secondAttribute="bottom" constant="16" id="rPA-7p-b77"/>
+                            <constraint firstItem="FoS-lq-4IX" firstAttribute="leading" secondItem="lq5-Ki-8Q0" secondAttribute="leading" constant="16" id="tbb-Qq-JRv"/>
+                            <constraint firstItem="FoS-lq-4IX" firstAttribute="centerX" secondItem="NaJ-AH-cF9" secondAttribute="centerX" id="xEN-EK-Ve6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="FoS-lq-4IX" id="OGi-Xj-sLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCC-uu-jZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="110"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

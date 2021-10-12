@@ -11,6 +11,8 @@ import UIKit
 
 class InternetConnectionController: UIViewController {
     
+    var deviceConnected = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,12 +22,14 @@ class InternetConnectionController: UIViewController {
     
     @objc private func deviceConnected(_ notification: Notification) {
         DispatchQueue.main.async {
+            self.deviceConnected = true
             self.onDeviceConnected()
         }
     }
     
     @objc private func connectionLost(_ notification: Notification) {
         DispatchQueue.main.async {
+            self.deviceConnected = false
             self.onConnectionLost()
         }
     }
